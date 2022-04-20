@@ -1,0 +1,24 @@
+name: 'test'
+description: Test Docker action
+inputs:
+  folder:
+    description: Folder name
+    required: true
+outputs:
+  status:
+    description: Action exit status
+  result:
+    description: Action steps results
+  error:
+    description: Error message if any
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    INPUT_FOLDER: $input.folder
+  args:
+    - node
+    - /app/dist/index.js
+branding:
+  icon: terminal
+  color: green
