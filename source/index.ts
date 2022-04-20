@@ -7,9 +7,10 @@ function getFiles(folder: string) {
     for (const file of files) {
         const absolute = Path.join(folder, file);
         if (FS.statSync(absolute).isDirectory()) {
+            console.log('d', absolute);
             getFiles(absolute);
         } else {
-            console.log(absolute);
+            console.log('f', absolute);
         }
     }
 }
